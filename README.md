@@ -15,5 +15,5 @@ Add the following dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  shake_detector_plugin: ^0.0.1
+  shake_detector_android: ^0.0.1
 # shake_detector_android

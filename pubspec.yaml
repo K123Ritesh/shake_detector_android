@@ -1,7 +1,7 @@
 name: shake_detector_android
 description: "The shake_detector_android is a Flutter plugin that allows your application to detect shake events using the device's accelerometer."
 version: 0.0.1
-homepage:
+homepage: https://github.com/K123Ritesh/shake_detector_android
 
 environment:
   sdk: '>=3.4.1 <4.0.0'
