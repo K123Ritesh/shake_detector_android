@@ -6,6 +6,8 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import io.flutter.plugin.common.EventChannel
+import kotlin.math.abs
+import kotlin.math.sqrt
 
 class ShakeDetector(private val context: Context) : EventChannel.StreamHandler, SensorEventListener {
     private var sensorManager: SensorManager? = null
@@ -58,10 +60,19 @@ class ShakeDetector(private val context: Context) : EventChannel.StreamHandler, 
             lastY = y
             lastZ = z
 
-            val acceleration = Math.sqrt((deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ).toDouble()) / timeDifference * 10000
+            // Calculate horizontal acceleration (X and Z axes)
+            val horizontalAcceleration = sqrt((deltaX * deltaX + deltaZ * deltaZ).toDouble()) / timeDifference * 10000
 
-            if (acceleration > shakeThreshold) {
-                eventSink?.success(true)
+            // Calculate vertical acceleration (Y axis)
+            val verticalAcceleration = abs(deltaY.toDouble()) / timeDifference * 10000
+
+            if (horizontalAcceleration > shakeThreshold || verticalAcceleration > shakeThreshold) {
+                val shakeDirection = when {
+                    horizontalAcceleration > shakeThreshold && verticalAcceleration > shakeThreshold -> "both"
+                    horizontalAcceleration > shakeThreshold -> "horizontal"
+                    else -> "vertical"
+                }
+                eventSink?.success(shakeDirection)
             }
         }
     }

@@ -7,9 +7,9 @@ class ShakeDetectorAndroid {
 
   static const EventChannel _eventChannel = EventChannel('shake_detector');
 
-  static void startListening(Function(bool) onShakeDetected) {
+  static void startListening(Function(String) onShakeDetected) {
     _eventChannel.receiveBroadcastStream().listen((event) {
-      onShakeDetected(event as bool);
+      onShakeDetected(event as String);
     });
   }
 }

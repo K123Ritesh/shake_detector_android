@@ -8,7 +8,8 @@ abstract class ShakeDetectorAndroidPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static ShakeDetectorAndroidPlatform _instance = MethodChannelShakeDetectorAndroid();
+  static ShakeDetectorAndroidPlatform _instance =
+      MethodChannelShakeDetectorAndroid();
 
   /// The default instance of [ShakeDetectorAndroidPlatform] to use.
   ///

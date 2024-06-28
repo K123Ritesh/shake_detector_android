@@ -20,6 +20,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     ShakeDetectorAndroid.startListening((e) {
       //Do Something Here
+      // print("TYPE OF SHAKE :- $e");
     });
   }
 

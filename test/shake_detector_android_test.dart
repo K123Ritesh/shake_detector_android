@@ -7,13 +7,13 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockShakeDetectorAndroidPlatform
     with MockPlatformInterfaceMixin
     implements ShakeDetectorAndroidPlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
 }
 
 void main() {
-  final ShakeDetectorAndroidPlatform initialPlatform = ShakeDetectorAndroidPlatform.instance;
+  final ShakeDetectorAndroidPlatform initialPlatform =
+      ShakeDetectorAndroidPlatform.instance;
 
   test('$MethodChannelShakeDetectorAndroid is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelShakeDetectorAndroid>());
@@ -21,7 +21,8 @@ void main() {
 
   test('getPlatformVersion', () async {
     ShakeDetectorAndroid shakeDetectorAndroidPlugin = ShakeDetectorAndroid();
-    MockShakeDetectorAndroidPlatform fakePlatform = MockShakeDetectorAndroidPlatform();
+    MockShakeDetectorAndroidPlatform fakePlatform =
+        MockShakeDetectorAndroidPlatform();
     ShakeDetectorAndroidPlatform.instance = fakePlatform;
 
     expect(await shakeDetectorAndroidPlugin.getPlatformVersion(), '42');
